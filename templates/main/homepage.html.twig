@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Starshop: Beam up some parts!
+{% endblock %}
+
+
+{% block body %}
+    
+
+
+<h1>
+    Starshop: your monopoly-busting option for Starship parts!
+</h1>
+
+<div>
+    <p>Browse through {{ numberOfStarships * 10 }} starships!</p>
+
+    <p>Browse through {{ ships|length * 10 }} starships!</p>
+
+    {% if numberOfStarships > 2 %}
+        <p>
+            That's a shiploads of ships!
+        </p>
+    {% endif %}
+
+    {% if ships|length > 2 %}
+        <p>
+            That's another shiploads of ships!
+        </p>
+    {% endif %}
+
+</div>
+
+<div>
+    <h2>My Ship</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <td>
+            <a href="{{ path('app_starship_show', {id: myShip.id}) }}">
+            {{ myShip.name }}
+            </a>
+            </td>
+        </tr>
+        <tr>
+            <th>Class</th>
+            <td>{{ myShip.class }}</td>
+        </tr>
+        <tr>
+            <th>Captain</th>
+            <td>{{ myShip.captain|upper }}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>{{ myShip.status }}</td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}
